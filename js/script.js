@@ -4,20 +4,20 @@
 /*===============SKILLS TAB================= */
 
 const tabs = document.querySelectorAll('[data-target]'),
-    tabContent = document.querySelectorAll('[data-content')
+    tabContent = document.querySelectorAll('[data-content]')
 
     tabs.forEach(tab => {
         tab.addEventListener("click", () => {
             const target = document.querySelector(tab.dataset.target)
             
-            tabContent.forEach(tabContent =>{
-                tabContent.classList.remove('skills__active')
+            tabContent.forEach(tabContents =>{
+                tabContents.classList.remove('skills__active')
             })
 
             target.classList.add('skills__active')
 
 
-            tab.forEach(tab =>{
+            tabs.forEach(tab => {
                 tab.classList.remove('skills__active')
             })
 
@@ -40,7 +40,7 @@ function activeWork() {
     linkWork.forEach(L=> I.classList.remove('active-work'))
     this.classList.add('active-work')
 }
-linkWork.forEach(L=> l.addEventListener("click",activeWork))
+linkWork.forEach(L => l.addEventListener("click",activeWork))
 /*===============LINK ACTIVE WORK================= */
 /*===============WORK POPUP================= */
 document.addEventListener("click", (e) => {
@@ -57,6 +57,8 @@ document.querySelector(".portfolio__popup-close").addEventListener("click",toggl
 
 function portfolioItemDetails(portfolioItem){
     document.querySelector(".pp__thumbnail img").src = portfolioItem.querySelector(".work__img").src;
+    document.querySelector(".portfolio2__popup-subtitle span").innerHTML = portfolioItem.querySelector(".work__title").innerHTML;
+    document.querySelector(".portfolio__popup-body").innerHTML = portfolioItem.querySelector("portfolio__item-details").innerHTML;
 }
 /*===============SERVICES MODAL================= */
 /*===============SWIPER TESTIMONIAL================= */

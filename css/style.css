@@ -710,10 +710,12 @@ input{
     align-items: center;
     padding: 0 1rem;
     z-index: var(--z-modal);
+    opacity:0;
+    visibility:hidden;
     transition: .3s;
-    }
+}
 
-    .services__modal-container{
+.services__modal-content{
         width:500px;
         position: relative;
         background-color: var(--box-color);
@@ -762,11 +764,31 @@ input{
 
 
 /* Active Modal*/
-
+.active-modal {
+    opacity: 1;
+    visibility: visible;
+}
 
 /*===== Testimonial Section =====*/
-
-
+@media screen and (min-width:992px){
+    .testimonials__container{
+        width:750px;
+        margin-left: auto!important;
+        margin-right: auto!important;
+    }
+}
+.testimonial__card{
+    background-blend-mode: var(--box-color);
+    padding:1.8rem 2rem;
+    border-radius: .5rem;
+    border-bottom:3rem;
+}
+.testimonial__quote{
+    display: inline-flex;
+    font-size: 1.5rem;
+    color:var(--skin-color);
+    margin-bottom:var(--mb-1);
+}
 /* Swiper Class */
 
 

@@ -84,5 +84,71 @@ modalCloses.forEach((modalClose) => {
     })
 })
 /*===============SWIPER TESTIMONIAL================= */
-/*===============SIDEBARSHOW================= */
+let swiper = new Swiper (".testimonials__container", {
+    spaceBetween: 24,
+    loop:true,
+    grabCursor:true,
+    pagination: {
+        el: ".swiper-pagination",
+        clickable:true,
+    },
+    breakpoints: {
+        576: {
+            slidesPerView: 2,
+        },
+        768: {
+            slidesPerView:2,
+            spaceBetween: 48,
+        },
+    }
+});
+/*===============INPUT ANIMATION================= */
+const inputs = document.querySelectorAll(".input");
+
+function focusFunc(){
+    let parent = this.parentNode;
+    parent.classList.add("focus");
+}
+function blurFunc(){
+    let parent =this.parentNode;
+    if(this.value ==""){
+        parent.classList.remove("focus");
+    }
+}
+inputs.forEach((input) => {
+    input.addEventListener("focus",focusFunc);/*hasta aca hace que al seleccionar el input para escribir, eel placeholder se suba y quede tachado */
+    input.addEventListener("blur", blurFunc);
+})
+/*===============SCROLL SECTION ACTIVE LINK================= */
+
+//esto hace que el bullet de la barra de navegacion lateral vaya acorde con la seccion de la pagina donde se encuentre el usuario
+//se va a ir corriendo sola generando un "active", en cada seccion a la que se vaya accediendo
+
+
+//get all sections that have an id dwefined
+const sections = document.querySelectorAll("section[id]");
+//add en event listener listening for scroll
+
+window.addEventListener("scroll", navHighlighter);
+function navHighlighter() {
+    //get current scroll position
+    let scrollY = window.pageYOffset;
+    //now we loop through sections to get height, top and ID values for each
+    sections.forEach(current => {
+        const sectionHeight = current.offsetHeight;
+        const sectionTop = current.offsetTop -50,
+        sectionId = current.getAttribute("id");
+        /* - if our currrent scroll position enters the space where current secion on screen is, add .active class to corresponding
+        navigation link, eslse remove it.
+        - to know which link needs an active class, we use sectionID variable we are getting while looping through
+        sections as an selector*/
+        if(scrollY > sectionTop && scrollY <= sectionTop + sectionHeight)
+        {
+            document.querySelector('.nav__menu a[href*=' + sectionId + ']').classList.add("active-link")
+        }
+        else{
+            document.querySelector('.nav__menu a[href*=' + sectionId + ']').classList.remove("active-link")
+        }
+    })
+}
 /*===============SIDEBARSHOW=================*/
